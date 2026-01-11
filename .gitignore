@@ -1,0 +1,90 @@
+## Core .NET Build Folders
+[Bb]in/
+[Oo]bj/
+.config/
+
+## Visual Studio & Solution Files
+.vs/
+.vscode/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.cache
+*_i.c
+*_p.c
+*.ilk
+*.meta
+*.obj
+*.pch
+*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+## Visual Studio Code (Optional: keep settings.json if shared)
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## JetBrains Rider
+.idea/
+*.sln.iml
+
+## Blazor Specifics
+# Generated static assets for Blazor WebAssembly
+wwwroot/_framework/
+
+# If using LibMan (Library Manager) to restore client-side libs
+# wwwroot/lib/
+
+# Scoped CSS (generated files usually handled by obj/, but just in case)
+# *.styles.css (Only uncomment if you see duplicates generated in root, rare in modern .NET)
+
+## Web/Node (If using NPM/Webpack/Tailwind with Blazor)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+# Keep package-lock.json? Usually yes. If not, uncomment line above.
+
+## Test Results
+TestResults/
+*.trdx
+*.visualstudio.testsettings
+*.testsettings
+
+## Environment & Secrets
+# Never commit production secrets or local dev overrides
+.env
+appsettings.Development.json
+appsettings.Local.json
+appsettings.local.json
+
+## Publish Output
+**/Properties/PublishProfiles/*.pubxml.user
+clientside/
+
+## OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
