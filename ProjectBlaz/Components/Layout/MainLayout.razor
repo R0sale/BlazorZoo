@@ -1,17 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="w-screen h-screen bg-gray-100">
+<div class="w-screen h-screen bg-gray-100 overflow-hidden">
     <div class="bg-black h-25 w-screen pt-5 pl-16">
         <img src="/blazor-zoo.png" />
     </div>
 
-    <div class="flex h-full">
-        <NavMenu />
-        <div class="flex">
-            <div class="px-4">
-                @Body
-            </div>
+    <div class="flex h-full w-full overflow-hidden">
+        <div class="h-full w-64 flex shrink-0">
+            <NavMenu />
+        </div>
+
+        <div class="flex-1 h-full w-full overflow-hidden overflow-y-auto">
+            @Body
         </div>
     </div>
+    
     
 </div>
