@@ -1,0 +1,109 @@
+﻿@page "/account/edit/{email}"
+@rendermode InteractiveServer
+
+@if (_userDto is null)
+{
+    <div>
+        Loading...
+    </div>
+}
+else
+{
+    <EditForm OnValidSubmit="EditUserAsync" Model="_userDto" class="max-w-2xl mx-auto mt-10 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+        <table class="w-full text-left border-collapse">
+            <thead>
+                <tr class="bg-gray-50 border-b border-gray-200">
+                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Property</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Value</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700 w-1/3">First name:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.FirstName" @bind-Value="_userDto.FirstName" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">Last name:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="@_userDto.LastName" @bind-value="_userDto.LastName" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">User name:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="@_userDto.Username" @bind-value="@_userDto.Username" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">Phone number:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.PhoneNumber" @bind-Value="_userDto.PhoneNumber" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">Email:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.Email" @bind-Value="_userDto.Email" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">Country:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.Address.Country" @bind-Value="_userDto.Address.Country" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">State:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.Address.State" @bind-Value="_userDto.Address.State" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">City:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.Address.City" @bind-value="_userDto.Address.City" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">Street:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.Address.Street" @bind-value="_userDto.Address.Street" />
+                    </td>
+                </tr>
+
+                <tr class="hover:bg-gray-50 transition-colors">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-700">Postal Code:</td>
+                    <td class="px-6 py-3">
+                        <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                   placeholder="@_userDto.Address.PostalCode" @bind-value="_userDto.Address.PostalCode" />
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+        <p>@_message</p>
+        <div>
+            <button type="submit" class="max-w-2xl cursor-pointer m-5 w-1/6 h-15 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:bg-orange-500 duration-300 hover:text-white hover:border-gray-400">Edit</button>
+        </div>
+    </EditForm>
+}

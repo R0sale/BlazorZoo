@@ -1,0 +1,28 @@
+﻿@page "/account/auth"
+@rendermode InteractiveServer
+
+<EditForm Model="_authUser" OnValidSubmit="LoginAsync" class="max-w-2xl mx-auto mt-10 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+    <table class="w-full text-left border-collapse">
+        <tbody class="divide-y divide-gray-100">
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700 w-1/3">Email:</td>
+                <td class="px-6 py-3">
+                    <InputText class=@InputTextCssClass
+                                placeholder="Email" @bind-Value="_authUser.Email" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Password:</td>
+                <td class="px-6 py-3">
+                    <InputText type="password" class=@InputTextCssClass
+                               placeholder="Password" @bind-value="_authUser.Password" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <p class="px-6 py-4 text-sm font-medium text-gray-700 w-1/3 text-red-600">@_errorMessage</p>
+    <div>
+        <button type="submit" class="max-w-2xl cursor-pointer m-5 w-1/6 h-10 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:bg-orange-500 duration-300 hover:text-white hover:border-gray-400">Log In</button>
+    </div>
+</EditForm>
