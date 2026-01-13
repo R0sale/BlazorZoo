@@ -1,4 +1,5 @@
-﻿using Entities.Contrats;
+﻿using Application.Validation;
+using Entities.Contrats;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Components;
 
@@ -17,6 +18,16 @@ namespace ProjectBlaz.Components.Pages
 
         public async Task CreateUserAsync()
         {
+            var validator = new CreateUserValidator();
+
+            var validationResult = validator.Validate(_createUserDto);
+
+            if (!validationResult.IsValid)
+            {
+                _message = string.Join("\n", validationResult.Errors.Select(e => e.ErrorMessage));
+                return;
+            }
+
             var result = await AuthService.SignUpAsync(_createUserDto);
 
             if (result)

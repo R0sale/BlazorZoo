@@ -231,9 +231,6 @@
   .left-24 {
     left: calc(var(--spacing) * 24);
   }
-  .left-48 {
-    left: calc(var(--spacing) * 48);
-  }
   .z-10 {
     z-index: 10;
   }
@@ -266,9 +263,6 @@
   }
   .flex {
     display: flex;
-  }
-  .table {
-    display: table;
   }
   .h-3 {
     height: calc(var(--spacing) * 3);
