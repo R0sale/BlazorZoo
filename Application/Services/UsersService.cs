@@ -1,7 +1,6 @@
 ﻿using Entities.Contrats;
 using Entities.Dtos;
 using Entities.Models;
-using ExceptionHandler.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;

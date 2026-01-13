@@ -1,0 +1,108 @@
+﻿@page "/account/signup"
+@rendermode InteractiveServer
+
+<EditForm OnValidSubmit="CreateUserAsync" Model="_createUserDto" class="max-w-2xl mx-auto mt-10 mb-30 bg-white rounded-xl shadow-lg overflow-y-auto border border-gray-100">
+    <table class="w-full text-left border-collapse">
+        <thead>
+            <tr class="bg-gray-50 border-b border-gray-200">
+                <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Property</th>
+                <th class="px-6 py-4 text-xs font-bold text-gray-500 uppercase tracking-wider">Value</th>
+            </tr>
+        </thead>
+        <tbody class="divide-y divide-gray-100">
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700 w-1/3">First name:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="FirstName" @bind-Value="_createUserDto.FirstName" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Last name:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="LastName" @bind-value="_createUserDto.LastName" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">User name:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="Username" @bind-value="@_createUserDto.Username" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Password:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               type="password" placeholder="Password" @bind-value="@_createUserDto.Password" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Phone number:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                placeholder="PhoneNumber" @bind-Value="_createUserDto.PhoneNumber" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Email:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="Email" @bind-Value="_createUserDto.Email" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Country:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                placeholder="Country" @bind-Value="_createUserDto.Address.Country" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">State:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="State" @bind-Value="_createUserDto.Address.State" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">City:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="City" @bind-value="_createUserDto.Address.City" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Street:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                                placeholder="Street" @bind-value="_createUserDto.Address.Street" />
+                </td>
+            </tr>
+
+            <tr class="hover:bg-gray-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-700">Postal Code:</td>
+                <td class="px-6 py-3">
+                    <InputText class="w-full px-3 py-2 bg-gray-50 border border-gray-300 rounded-lg text-sm focus:outline-none focus:border-orange-400 focus:ring-2 focus:ring-orange-100 transition-all"
+                               placeholder="PostalCode" @bind-value="_createUserDto.Address.PostalCode" />
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <p class="px-6 py-4 text-sm font-medium text-gray-700 w-1/3 text-red-600">@_message</p>
+    <div>
+        <button type="submit" class="max-w-2xl cursor-pointer m-5 w-1/6 h-15 bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:bg-orange-500 duration-300 hover:text-white hover:border-gray-400">Sign Up</button>
+    </div>
+</EditForm>

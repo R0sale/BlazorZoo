@@ -32,5 +32,10 @@ namespace ProjectBlaz.Components.Pages
             else
                 NavigationManager?.NavigateTo($"/account/{_authUser.Email}");
         }
+
+        public void GoToSignUpPage()
+        {
+            NavigationManager.NavigateTo("/account/signup");
+        }
     }
 }
