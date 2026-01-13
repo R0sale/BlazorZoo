@@ -1,0 +1,42 @@
+﻿@rendermode InteractiveServer
+
+@if (User.Address is null)
+{
+    <div>
+        <p>Loading user details...</p>
+    </div>
+}
+else
+{
+    <div>
+        <table class="m-5 text-2xl">
+            <tr>
+                <td class="pr-32 font-bold">Phone:</td>
+                <td>@User.PhoneNumber</td>
+            </tr>
+            <tr>
+                <td class="pr-32 font-bold">Address:</td>
+            </tr>
+            <tr>
+                <td class="pr-32">Country:</td>
+                <td>@User.Address.Country</td>
+            </tr>
+            <tr>
+                <td class="pr-32">State:</td>
+                <td>@User.Address.State</td>
+            </tr>
+            <tr>
+                <td class="pr-32">City:</td>
+                <td>@User.Address.City</td>
+            </tr>
+            <tr>
+                <td class="pr-32">Street:</td>
+                <td>@User.Address.Street</td>
+            </tr>
+            <tr>
+                <td class="pr-32">Postal Code:</td>
+                <td>@User.Address.PostalCode</td>
+            </tr>
+        </table>
+    </div>
+}
