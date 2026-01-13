@@ -3,6 +3,7 @@ using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(UsersDbContext))]
-    partial class UsersDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260112073451_Added phine number and address to user.")]
+    partial class Addedphinenumberandaddresstouser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +69,7 @@ namespace Infrastructure.Migrations
                             FirstName = "John",
                             ImageUrl = "/koala.webp",
                             LastName = "Black",
-                            PasswordHash = "A55FD8DDBE049632BF24D0615A52B9D5021527DDF478215A0257A4E80879D340",
+                            PasswordHash = "System.Byte[]",
                             PhoneNumber = "+375299998493",
                             Username = "JoeBlack"
                         },
@@ -77,7 +80,7 @@ namespace Infrastructure.Migrations
                             FirstName = "Kirill",
                             ImageUrl = "/koala.webp",
                             LastName = "Bush",
-                            PasswordHash = "A55FD8DDBE049632BF24D0615A52B9D5021527DDF478215A0257A4E80879D340",
+                            PasswordHash = "System.Byte[]",
                             PhoneNumber = "+375299998493",
                             Username = "Baiden"
                         });
@@ -121,15 +124,6 @@ namespace Infrastructure.Migrations
                                     PostalCode = "222435",
                                     State = "No state",
                                     Street = "Kastrychnickaya"
-                                },
-                                new
-                                {
-                                    UserId = "cd244cd6-239f-49c7-9532-7dbd95e4a156",
-                                    City = "Tampa",
-                                    Country = "USA",
-                                    PostalCode = "222435",
-                                    State = "South Florida",
-                                    Street = "Lenina"
                                 });
                         });
 

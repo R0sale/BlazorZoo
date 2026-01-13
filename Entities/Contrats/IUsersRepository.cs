@@ -12,5 +12,8 @@ namespace Entities.Contrats
     {
         Task<IEnumerable<User>> GetAllUsersAsync();
         Task CreateUserAsync(User newUser);
+        Task DeleteUserByEmailAsync(string email);
+        Task<User> GetUserByEmailAsync(string email);
+        Task UpdateUserAsync(User user);
     }
 }

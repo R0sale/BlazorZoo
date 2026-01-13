@@ -11,6 +11,9 @@ namespace Entities.Contrats
     public interface IUsersService
     {
         Task<IEnumerable<UserDto>> GetAllUsersAsync();
-        Task CreateUserAsync(CreateUserDto newUser);
+        Task<bool> CreateUserAsync(CreateUserDto newUser);
+        Task DeleteUserByEmailAsync(string email);
+        Task<UserDto> GetUserByEmailAsync(string email);
+        Task<bool> UpdateUserAsync(UserDto user);
     }
 }

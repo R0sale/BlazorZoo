@@ -2,6 +2,7 @@
 [Bb]in/
 [Oo]bj/
 .config/
+*/tailwind.exe
 
 ## Visual Studio & Solution Files
 .vs/
