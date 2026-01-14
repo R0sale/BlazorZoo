@@ -1,10 +1,17 @@
 ﻿@page "/account/{email}"
+@rendermode InteractiveServer
 
-<div class="w-full h-full bg-gray-200">
+<div class="w-full h-full bg-gray-200 relative">
+
+    <div class="z-10 w-1/3 h-1/2 absolute right-1/2 top-1/2">
+        <DeletionPopUp @bind-IsVisible="ShowDeletionPopUp" Email="@User.Email" />
+    </div>
+
     <header class="py-10 px-20">
-        <AccountHeader User="User" />
+        <AccountHeader @bind-IsVisible="ShowDeletionPopUp" User="User" />
     </header>
     <main class="w-full h-150 px-20">
         <AccountBody User="User" />
     </main>
+
 </div>

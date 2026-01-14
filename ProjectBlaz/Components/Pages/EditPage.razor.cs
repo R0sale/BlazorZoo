@@ -11,6 +11,11 @@ namespace ProjectBlaz.Components.Pages
         public string? Email { get; set; }
         private UserDto _userDto;
 
+        private string _messageCssClass = "text-red-600";
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
+
         [Inject]
         public IUsersService UserService { get; set; }
 
@@ -31,6 +36,7 @@ namespace ProjectBlaz.Components.Pages
 
             if (!validationResult.IsValid)
             {
+                _messageCssClass = "text-red-600";
                 _message = string.Join("\n", validationResult.Errors.Select(e => e.ErrorMessage));
                 return;
             }
@@ -38,10 +44,13 @@ namespace ProjectBlaz.Components.Pages
             if (!await UserService.UpdateUserAsync(_userDto))
             {
                 _message = "Error updating user.";
+                _messageCssClass = "text-red-600";
             }
             else
             {
+                _messageCssClass = "text-green-600";
                 _message = "User updated successfully.";
+                NavigationManager.NavigateTo($"/account/{_userDto.Email}");
             }
         }
     }

@@ -4,6 +4,6 @@
     <h1 class="text-3xl pl-10 pt-6 text-gray-700">@($"{User.FirstName} {User.LastName}")</h1>
     <div class="w-full">
         <button @onclick="GoToEditPage" style="cursor: pointer;" class="absolute w-20 h-10  text-orange-500 left-4 bottom-2 hover:bg-gray-200">Edit</button>
-        <button @onclick="@(async () => await DeleteAccountAsync(@User.Email))" style="cursor: pointer;" class="absolute w-20 h-10 text-orange-500 left-24 bottom-2 hover:bg-gray-200">Detele</button>
+        <button @onclick="DeleteAccount" style="cursor: pointer;" class="absolute w-20 h-10 text-orange-500 left-24 bottom-2 hover:bg-gray-200">Detele</button>
     </div>
 </div>

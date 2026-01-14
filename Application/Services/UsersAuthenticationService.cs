@@ -57,7 +57,7 @@ namespace Application.Services
                 Email = newUser.Email,  
                 PhoneNumber = newUser.PhoneNumber,
                 Address = newUser.Address,
-                ImageUrl = "guest.png",
+                ImageUrl = "/guest.png",
                 PasswordHash = hash
             };
 
