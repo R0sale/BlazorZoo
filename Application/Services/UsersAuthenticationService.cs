@@ -19,23 +19,23 @@ namespace Application.Services
             _usersRepo = usersRepo;
         }
 
-        public async Task<bool> AuthenticateUserAsync(string email, string password)
+        public async Task<(bool, string)> AuthenticateUserAsync(string email, string password)
         {
             var user = await _usersRepo.GetUserByEmailAsync(email);
 
             if (user is null)
-                return false;
-
-            Console.WriteLine(user.PasswordHash);
-            Console.WriteLine(Convert.ToHexString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(password))));
+            {
+                return (false, "User not found.");
+            }
+                
 
             if (user.PasswordHash.Equals(Convert.ToHexString(SHA256.Create().ComputeHash(Encoding.UTF8.GetBytes(password)))))
             {
-                return true;
+                return (true, "Success");
             }
             else
             {
-                return false;
+                return (false, "Invalid email or password.");
             }
         }
 

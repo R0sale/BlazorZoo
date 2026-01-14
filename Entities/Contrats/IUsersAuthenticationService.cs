@@ -9,7 +9,7 @@ namespace Entities.Contrats
 {
     public interface IUsersAuthenticationService
     {
-        Task<bool> AuthenticateUserAsync(string email, string password);
+        Task<(bool, string)> AuthenticateUserAsync(string email, string password);
         Task<bool> SignUpAsync(CreateUserDto newUser);
     }
 }

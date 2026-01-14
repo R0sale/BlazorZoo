@@ -38,10 +38,10 @@ namespace ProjectBlaz.Components.Pages
 
             var valid = await UserService.AuthenticateUserAsync(_authUser.Email, _authUser.Password);
 
-            if (!valid)
-                _errorMessage = "Invalid email or password.";
-            else
+            if (valid.Item1)
                 NavigationManager?.NavigateTo($"/account/{_authUser.Email}");
+            else
+                _errorMessage = valid.Item2;
         }
 
         public void GoToSignUpPage()
