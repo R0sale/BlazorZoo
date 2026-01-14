@@ -1,4 +1,5 @@
-﻿using Entities.Contrats;
+﻿using Application.Validation;
+using Entities.Contrats;
 using Entities.Models;
 using Microsoft.AspNetCore.Components;
 using System.Security.Authentication;
@@ -25,12 +26,27 @@ namespace ProjectBlaz.Components.Pages
 
         public async Task LoginAsync()
         {
+            var validator = new AuthUserValidator();
+
+            var validationResult = validator.Validate(_authUser);
+
+            if (!validationResult.IsValid)
+            {
+                _errorMessage = string.Join("\n", validationResult.Errors.Select(e => e.ErrorMessage));
+                return;
+            }
+
             var valid = await UserService.AuthenticateUserAsync(_authUser.Email, _authUser.Password);
 
-            if (!valid)
-                _errorMessage = "Invalid email or password.";
-            else
+            if (valid.Item1)
                 NavigationManager?.NavigateTo($"/account/{_authUser.Email}");
+            else
+                _errorMessage = valid.Item2;
+        }
+
+        public void GoToSignUpPage()
+        {
+            NavigationManager.NavigateTo("/account/signup");
         }
     }
 }

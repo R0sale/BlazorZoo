@@ -12,15 +12,22 @@ namespace ProjectBlaz.Components
         [Parameter]
         public UserDto User { get; set; }
 
+        [Parameter]
+        public bool IsVisible { get; set; }
+        [Parameter]
+        public EventCallback<bool> IsVisibleChanged { get; set; }
+
         [Inject]
         public IUsersService UserService { get; set; }
 
         [Inject]
         public NavigationManager NavigationManager { get; set; }
 
-        public async Task DeleteAccountAsync(string email)
+        public async Task DeleteAccount()
         {
-            await UserService.DeleteUserByEmailAsync(email);
+            IsVisible = true;
+
+            await IsVisibleChanged.InvokeAsync(true);
         }
 
         public async Task CreateUserAsync()

@@ -16,6 +16,6 @@ namespace Entities.Dtos
         public string? LastName { get; set; }
         public string? ImageUrl { get; set; }
         public string? PhoneNumber { get; set; }
-        public Address? Address { get; set; }
+        public Address? Address { get; set; } = new Address();
     }
 }

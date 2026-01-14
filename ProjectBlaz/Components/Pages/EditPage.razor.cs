@@ -1,4 +1,5 @@
-﻿using Entities.Contrats;
+﻿using Application.Validation;
+using Entities.Contrats;
 using Entities.Dtos;
 using Microsoft.AspNetCore.Components;
 
@@ -9,6 +10,11 @@ namespace ProjectBlaz.Components.Pages
         [Parameter]
         public string? Email { get; set; }
         private UserDto _userDto;
+
+        private string _messageCssClass = "text-red-600";
+
+        [Inject]
+        public NavigationManager NavigationManager { get; set; }
 
         [Inject]
         public IUsersService UserService { get; set; }
@@ -24,13 +30,27 @@ namespace ProjectBlaz.Components.Pages
 
         public async Task EditUserAsync()
         {
+            var validator = new EditUserValidator();
+
+            var validationResult = validator.Validate(_userDto);
+
+            if (!validationResult.IsValid)
+            {
+                _messageCssClass = "text-red-600";
+                _message = string.Join("\n", validationResult.Errors.Select(e => e.ErrorMessage));
+                return;
+            }
+
             if (!await UserService.UpdateUserAsync(_userDto))
             {
                 _message = "Error updating user.";
+                _messageCssClass = "text-red-600";
             }
             else
             {
+                _messageCssClass = "text-green-600";
                 _message = "User updated successfully.";
+                NavigationManager.NavigateTo($"/account/{_userDto.Email}");
             }
         }
     }

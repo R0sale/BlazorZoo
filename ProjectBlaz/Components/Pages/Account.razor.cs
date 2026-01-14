@@ -11,6 +11,8 @@ namespace ProjectBlaz.Components.Pages
         [Parameter]
         public string? Email { get; set; }
 
+        public bool ShowDeletionPopUp { get; set; } = false;
+
         [Inject]
         public IUsersService UserService { get; set; }
 
